@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Total Sum</title>
+</head>
+<body>
+
+
+<script>
+
+    //Using for loop
+    let numbers = [1, 2, 3, 4, 5],
+        total = 0;
+    numbers.forEach(function (number) {
+        total += number;
+    }); //15
+
+    // using reduce()
+    total=0;
+    numbers.reduce(function (previous, current) {
+         total = previous+current;
+         return total;
+    },5); //20
+
+    //using reduce() with Arrow function
+    total=0;
+    total = numbers.reduce((previousValue, currentValue) => previousValue+currentValue),0;
+
+    //console.log(total);
+
+
+
+    //step by step
+    total=0;
+     total = [1, 2, 3, 4, 5].reduce(function (previous, current, index) {
+        const val = previous + current;
+        console.log("The previous value is " + previous +
+            "; the current value is " + current +
+            ", and the current iteration is " + (index + 1));
+        return val;
+    }, 0);
+
+    console.log("The loop is done, and the final value is " + total + ".");
+
+</script>
+
+</body>
+</html>
