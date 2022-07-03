@@ -6,22 +6,21 @@ function myFunction() {
 
     const xhttp = new XMLHttpRequest();
 
-    xhttp.open("GET", "https://gist.githubusercontent.com/keeguon/2310008/raw/bdc2ce1c1e3f28f9cab5b4393c7549f38361be4e/countries.json");
-    //xhttp.responseType = "json";
+    xhttp.open("GET", "http://api.plos.org/search?q=title:%22Drosophila%22%20and%20body:%22RNA%22&fl=id,abstract&wt=json&indent=on");
+    //xhttp.responseType = 'json';
     xhttp.send();
 
     xhttp.onload = function() {
 
-        var countries = xhttp.response;
-
+        var countries =xhttp.response;
+        console.log(countries);
 
 
         // let country = JSON.stringify(countries);
-        let countrys = JSON.parse({countries});
-        console.log(typeof countrys);
-
-        //
+        // let countrys = JSON.parse(countries);
         // console.log(typeof countrys);
+        // console.log(typeof countries);
+        //
         // console.log(countrys);
 
         // countrys.map(function (country){
