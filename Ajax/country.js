@@ -13,42 +13,33 @@ function countryFunction() {
 
         var countries =xhttp.response;
 
+        createList(countries);
 
         //console.log(countries);
         // let countrys = JSON.parse(countries);
         // console.log(typeof countrys);
         // console.log(countrys);
-
-        countries.map(function (country){
-
-            createList(country);
-
-        });
     };
 }
 
-
-
 function createList(data) {
 
-    const ul = document.createElement("ul");
+    data.map(function (list){
 
-    const node = document.createElement("li");
+        const ul = document.createElement("ul");
 
-    const textnode = document.createTextNode(data.name);
+        const node = document.createElement("li");
 
-    ul.appendChild(node);
+        const textnode = document.createTextNode(list.name);
 
-    node.appendChild(textnode);
+        ul.appendChild(node);
 
-    document.body.appendChild(node);
+        node.appendChild(textnode);
 
+        document.body.appendChild(node);
+
+    });
 }
-
-
-
-
-
 
 const elementDistrict = document.getElementById("districtId");
 elementDistrict.addEventListener("click", districtFunction);
@@ -57,11 +48,8 @@ async function districtFunction() {
 
     let districts = await getDistricts();
 
-    districts.map(function (district){
+    createList(districts);
 
-        createList(district);
-
-    });
 
 
     async function getDistricts() {
