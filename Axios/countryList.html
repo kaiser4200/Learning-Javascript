@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Country List</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+
+</head>
+<body>
+
+
+<div id="div1">
+    <h2>Let jQuery AJAX Change This Text</h2>
+
+    <ol id="ol"> </ol>
+</div>
+
+
+<script>
+
+    // Make a request for a user with a given ID
+    axios.get('../Ajax/countries.json')
+        .then(function (response) {
+            // handle success
+
+            result = response.data;
+
+            console.log(result);
+
+            createList(result);
+        })
+        .catch(function (error) {
+            // handle error
+            console.log(error);
+        });
+
+    function createList(data) {
+
+        data.map(function (list){
+
+            const ul = document.createElement("ol");
+
+            const node = document.createElement("li");
+
+            const textnode = document.createTextNode(list.name);
+
+            ul.appendChild(node);
+
+            node.appendChild(textnode);
+
+            document.body.appendChild(node);
+
+        });
+    }
+
+
+
+
+    // Want to use async/await? Add the `async` keyword to your outer function/method.
+    // async function getUser() {
+    //     try {
+    //         const response = await axios.get('/user?ID=12345');
+    //         console.log(response);
+    //     } catch (error) {
+    //         console.error(error);
+    //     }
+    // }
+
+</script>
+
+</body>
+</html>

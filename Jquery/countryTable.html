@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("button").click(function(){
+                $.ajax(
+                    {
+                        url: "../Ajax/countries.json",
+                        success: function(result){
+
+                            result.map(function (country) {
+
+                                var name = $("<li></li>").text(country.name);
+
+                                $("#ol").append(name);
+                            });
+
+                    }});
+            });
+        });
+    </script>
+</head>
+<body>
+
+<div id="div1">
+    <h2>Let jQuery AJAX Change This Text</h2>
+
+    <ol id="ol"> </ol>
+</div>
+
+<button>Load Country Using Jquery Ajax</button>
+
+</body>
+</html>
